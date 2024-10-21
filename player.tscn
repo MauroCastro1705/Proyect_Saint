@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://c4yoq72f8xda3"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_3xgl3"]
+[ext_resource type="Texture2D" uid="uid://dl6jdsd6126df" path="res://art/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Soldier/Soldier/Soldier-Walk.png" id="2_0tiiq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn1hb"]
+atlas = ExtResource("2_0tiiq")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfwjc"]
+atlas = ExtResource("2_0tiiq")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3edq8"]
+atlas = ExtResource("2_0tiiq")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3enw3"]
+atlas = ExtResource("2_0tiiq")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu3pa"]
+atlas = ExtResource("2_0tiiq")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rthd4"]
+atlas = ExtResource("2_0tiiq")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ldd2"]
+atlas = ExtResource("2_0tiiq")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nn2ao"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn1hb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfwjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3edq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3enw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu3pa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rthd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ldd2")
+}],
+"loop": false,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_84x83"]
+radius = 5.2
+height = 14.0
+
+[node name="Player" type="Area2D"]
+position = Vector2(-1, 0)
+script = ExtResource("1_3xgl3")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_nn2ao")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_84x83")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
