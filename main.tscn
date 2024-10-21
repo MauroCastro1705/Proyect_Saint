@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnmnkpm547ojq"]
+[gd_scene load_steps=6 format=3 uid="uid://cnmnkpm547ojq"]
 
 [ext_resource type="PackedScene" uid="uid://c4yoq72f8xda3" path="res://player.tscn" id="1_la5xm"]
 [ext_resource type="Script" path="res://main.gd" id="1_ous30"]
 [ext_resource type="PackedScene" uid="uid://cfv0g5w4h1vwp" path="res://mob.tscn" id="2_5n2sm"]
+[ext_resource type="PackedScene" uid="uid://cqi6khvbtopy5" path="res://hud.tscn" id="4_5x4dm"]
 
 [sub_resource type="Curve2D" id="Curve2D_rf616"]
 _data = {
@@ -17,7 +18,7 @@ mob_scene = ExtResource("2_5n2sm")
 [node name="ScoreTimer" type="Timer" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_la5xm")]
-position = Vector2(234, 328)
+position = Vector2(233, 398)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -36,8 +37,11 @@ curve = SubResource("Curve2D_rf616")
 position = Vector2(12, 10)
 rotation = 0.909753
 
+[node name="HUD" parent="." instance=ExtResource("4_5x4dm")]
+
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqi6khvbtopy5"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_frvr8"]
+[ext_resource type="FontFile" uid="uid://btgdvxu1bdmkv" path="res://fonts/Enchanted Land.otf" id="2_vmm6x"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_frvr8")
+
+[node name="ScoreLabel2" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_right = 77.0
+offset_bottom = 97.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_vmm6x")
+theme_override_font_sizes/font_size = 33
+text = "0"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Message2" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -160.0
+offset_right = 112.5
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_vmm6x")
+theme_override_font_sizes/font_size = 43
+text = "Esquiva a los Orcos"
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton2" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.5
+offset_top = -120.0
+offset_right = 54.5
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_vmm6x")
+theme_override_font_sizes/font_size = 40
+text = "Start"
+metadata/_edit_use_anchors_ = true
+
+[node name="MessageTimer2" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
