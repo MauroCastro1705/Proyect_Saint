@@ -5,14 +5,13 @@ var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	new_game()
+	$Player.hide()#oculta jugador hasta apretar start
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
-
-
 
 func game_over():
 	$ScoreTimer.stop()
@@ -26,6 +25,7 @@ func new_game():
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
 	get_tree().call_group("mobs", "queue_free")
+	$Player.show() #muestra jugador
 
 
 func _on_score_timer_timeout() -> void:
