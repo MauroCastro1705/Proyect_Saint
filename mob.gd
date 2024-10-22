@@ -1,16 +1,22 @@
 extends RigidBody2D
 
+var player : Node2D  # El jugador que el mob seguirá
+var speed = 20  # Velocidad del mob
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	var mob_types = $AnimatedSprite2D.sprite_frames.get_animation_names()
-	$AnimatedSprite2D.play(mob_types[randi() % mob_types.size()])
+func _physics_process(_delta):
+	if player:
+		# Calcular la dirección hacia el jugador
+		var direction = (player.position - position).normalized()
 
+		# Aplicar una velocidad constante hacia el jugador
+		linear_velocity = direction * speed
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+		# Apuntar hacia el jugador
+		look_at(player.position)
 
-
+# Método para asignar el jugador al mob
+func set_player(player_ref):
+	player = player_ref
+	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
