@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnhtcegdicigv"]
+
+[ext_resource type="Script" path="res://proyectile.gd" id="1_e6lt7"]
+[ext_resource type="Texture2D" uid="uid://c33ihegym7rmn" path="res://art/cross-proy.png" id="2_w5rk5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwd6e"]
+size = Vector2(18, 35)
+
+[node name="Proyectile" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_e6lt7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.00001, 7.62939e-06)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_w5rk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rwd6e")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
