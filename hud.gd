@@ -6,7 +6,10 @@ func show_message(text):
 	$Message2.text = text
 	$Message2.show()
 	$MessageTimer2.start()
-
+	
+func update_health(health: int):
+	$HealthLabel.text = "Health: " + str(health)
+	
 func show_game_over():
 	show_message("Game Over")
 	# Wait until the MessageTimer has counted down.

@@ -12,14 +12,18 @@ collision_mask = 5
 script = ExtResource("1_e6lt7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.00001, 7.62939e-06)
+position = Vector2(20, 17)
+rotation = -1.5708
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_w5rk5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(18, 18)
+rotation = -1.5708
 shape = SubResource("RectangleShape2D_rwd6e")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(19, 18)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,59 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfv0g5w4h1vwp"]
+[gd_scene load_steps=5 format=3 uid="uid://cfv0g5w4h1vwp"]
 
 [ext_resource type="Script" path="res://mob.gd" id="1_2tn60"]
-[ext_resource type="Texture2D" uid="uid://5cfxhffnq6c6" path="res://art/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Orc/Orc/Orc-Walk.png" id="1_itscc"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_csay7"]
-atlas = ExtResource("1_itscc")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6j2tt"]
-atlas = ExtResource("1_itscc")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h53ab"]
-atlas = ExtResource("1_itscc")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nnfdh"]
-atlas = ExtResource("1_itscc")
-region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cgl21"]
-atlas = ExtResource("1_itscc")
-region = Rect2(400, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_32vad"]
-atlas = ExtResource("1_itscc")
-region = Rect2(500, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k57qm"]
-atlas = ExtResource("1_itscc")
-region = Rect2(600, 0, 100, 100)
+[ext_resource type="Texture2D" uid="uid://c6m1xspwbmgbc" path="res://art/conan.png" id="2_oq0p4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_njytr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_csay7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6j2tt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h53ab")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nnfdh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cgl21")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_32vad")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k57qm")
+"texture": ExtResource("2_oq0p4")
 }],
 "loop": false,
 "name": &"walk",
@@ -67,16 +21,15 @@ height = 60.0
 [node name="mob" type="RigidBody2D" groups=["mob"]]
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
-collision_mask = 14
+collision_mask = 15
 gravity_scale = 0.0
 script = ExtResource("1_2tn60")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["mob"]]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_njytr")
 animation = &"walk"
-frame = 6
 frame_progress = 1.0
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

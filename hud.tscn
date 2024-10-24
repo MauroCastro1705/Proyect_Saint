@@ -78,5 +78,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = 381.0
+offset_top = 8.0
+offset_right = 421.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("2_vmm6x")
+theme_override_font_sizes/font_size = 33
+text = "0"
+
 [connection signal="pressed" from="StartButton2" to="." method="_on_start_button_2_pressed"]
 [connection signal="timeout" from="MessageTimer2" to="." method="_on_message_timer_2_timeout"]

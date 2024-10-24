@@ -1,82 +1,45 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4yoq72f8xda3"]
+[gd_scene load_steps=7 format=3 uid="uid://c4yoq72f8xda3"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_3xgl3"]
-[ext_resource type="Texture2D" uid="uid://dl6jdsd6126df" path="res://art/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Soldier/Soldier/Soldier-Walk.png" id="2_0tiiq"]
 [ext_resource type="PackedScene" uid="uid://bnhtcegdicigv" path="res://proyectile.tscn" id="3_k7qqy"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fn1hb"]
-atlas = ExtResource("2_0tiiq")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vfwjc"]
-atlas = ExtResource("2_0tiiq")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3edq8"]
-atlas = ExtResource("2_0tiiq")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3enw3"]
-atlas = ExtResource("2_0tiiq")
-region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qu3pa"]
-atlas = ExtResource("2_0tiiq")
-region = Rect2(400, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rthd4"]
-atlas = ExtResource("2_0tiiq")
-region = Rect2(500, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ldd2"]
-atlas = ExtResource("2_0tiiq")
-region = Rect2(600, 0, 100, 100)
+[ext_resource type="Texture2D" uid="uid://bbwmbp8m0f5qp" path="res://art/caranueva (1).png" id="3_kj6cb"]
+[ext_resource type="Texture2D" uid="uid://he80dptpd5t" path="res://art/caranueva (2).png" id="4_etri4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nn2ao"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fn1hb")
+"texture": ExtResource("4_etri4")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vfwjc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3edq8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3enw3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qu3pa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rthd4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ldd2")
+"texture": ExtResource("3_kj6cb")
 }],
 "loop": false,
-"name": &"walk",
+"name": &"Shoot",
 "speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_84x83"]
-radius = 5.2
-height = 14.0
+radius = 4.39999
+height = 12.0
 
-[node name="Player" type="CharacterBody2D"]
-position = Vector2(233, 355)
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(235, 356)
 scale = Vector2(0.5, 0.5)
-collision_mask = 2
+collision_mask = 10
 script = ExtResource("1_3xgl3")
 projectile_scene = ExtResource("3_k7qqy")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3, 3)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_nn2ao")
-animation = &"walk"
+animation = &"Shoot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(5, 5)

@@ -3,9 +3,10 @@ extends RigidBody2D
 var speed = 100
 var health = 3
 var player = null
+signal mob_killed
 
 func _ready():
-	add_to_group("mobs")  # Cambiado a "mobs" para coincidir con el main.gd
+	add_to_group("mobs")
 	gravity_scale = 0
 	contact_monitor = true
 	max_contacts_reported = 4
@@ -22,4 +23,5 @@ func _physics_process(delta):
 func take_damage(damage):
 	health -= damage
 	if health <= 0:
+		mob_killed.emit()
 		queue_free()

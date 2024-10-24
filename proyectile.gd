@@ -5,6 +5,7 @@ extends RigidBody2D
 
 func _ready():
 	add_to_group("projectiles")
+	
 	# Configuraciones importantes para el proyectil
 	gravity_scale = 0
 	contact_monitor = true
@@ -14,6 +15,7 @@ func _ready():
 func _physics_process(delta):
 	# El proyectil mantiene su velocidad lineal constante
 	linear_velocity = Vector2.RIGHT.rotated(rotation) * speed
+	
 
 func _on_body_entered(body):
 	if body.is_in_group("mobs") and body.has_method("take_damage"):
